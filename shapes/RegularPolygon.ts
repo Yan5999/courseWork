@@ -16,7 +16,7 @@ export class RegularPolygon extends Polygon {
         y: center.y + circumradius * Math.sin(angle),
       });
     }
-    super(vertices);
+    super(vertices, sidesCount);
     this.center = center;
   }
 

@@ -14,8 +14,8 @@ import { Triangle } from '../shapes/Triagnle';
 import { TriangleBySides } from '../shapes/TriagnleBySides';
 
 export class ShapeFactory {
-  static createTriangleByPoints(p1: IPoint, p2: IPoint, p3: IPoint): Triangle {
-    return new Triangle(p1, p2, p3);
+  static createTriangleByPoints(points: IPoint[], count: number): Triangle {
+    return new Triangle(points, count);
   }
 
   static createTriangleBySides(a: number, b: number, c: number): IShape {
@@ -42,20 +42,16 @@ export class ShapeFactory {
     return new RegularPolygon(center, circumradius, sidesCount);
   }
 
-  static createRectangle(topLeft: IPoint, bottomRight: IPoint): Rectangle {
-    return new Rectangle(topLeft, bottomRight);
+  static createRectangle(points: IPoint[], count: number): Rectangle {
+    return new Rectangle(points, count);
   }
 
-  static createSquare(topLeft: IPoint, side: number): Square {
-    return new Square(topLeft, side);
+  static createSquare(points: IPoint[], count: number, side: number): Square {
+    return new Square(points, count, side);
   }
 
-  static createParallelogram(
-    p1: IPoint,
-    p2: IPoint,
-    p3: IPoint,
-  ): Parallelogram {
-    return new Parallelogram(p1, p2, p3);
+  static createParallelogram(points: IPoint[], count: number): Parallelogram {
+    return new Parallelogram(points, count);
   }
 
   static createRhombusByDiagonales(
@@ -74,30 +70,17 @@ export class ShapeFactory {
     return new TrapezoidBySides(a, b, c, h);
   }
 
-  static createPolygon(vertices: IPoint[]): Polygon {
-    if (vertices.length < 3) {
-      throw new Error('Многокутник повинен мати мінімум 3 вершини');
-    }
-    return new Polygon(vertices);
+  static createPolygon(vertices: IPoint[], count: number): Polygon {
+    return new Polygon(vertices, count);
   }
   static createSquareBySide(side: number): Square {
-    return new Square({ x: 0, y: 0 }, side);
+    return new Square([{ x: 0, y: 0 }], 1, side);
   }
-  static createTrapezoidByPoints(
-    p1: IPoint,
-    p2: IPoint,
-    p3: IPoint,
-    p4: IPoint,
-  ): Polygon {
-    return new Polygon([p1, p2, p3, p4]);
+  static createTrapezoidByPoints(points: IPoint[], count: number): Polygon {
+    return new Polygon(points, count);
   }
-  static createRhombusByPoints(
-    p1: IPoint,
-    p2: IPoint,
-    p3: IPoint,
-    p4: IPoint,
-  ): Polygon {
-    return new Polygon([p1, p2, p3, p4]);
+  static createRhombusByPoints(points: IPoint[], count: number): Polygon {
+    return new Polygon(points, count);
   }
   static createParallelogramByParams(
     base: number,

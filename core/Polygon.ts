@@ -4,14 +4,27 @@ import { Shape } from './Shape';
 export class Polygon extends Shape {
   constructor(
     protected vertices: IPoint[],
+    private count: number,
     private customName?: string,
   ) {
     super();
+    if (vertices.length < count) {
+      throw new Error(
+        `Потрібно було ${count} вершин, а отримано ${vertices.length}`,
+      );
+    } else if (this.vertices.length < 3) {
+      throw new Error('Многокутник повинен мати мінімум 3 вершини');
+    }
+
+    this.vertices = vertices.slice(0, this.count);
+
     this.center = this.calculateCentroid();
   }
+
   public get name(): string {
     return this.customName || 'Багатокутник';
   }
+
   public getDistance(p1: IPoint, p2: IPoint): number {
     return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
   }
