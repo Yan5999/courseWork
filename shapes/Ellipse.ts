@@ -8,6 +8,8 @@ export class Ellipse extends Shape {
     public semiMinorAxis: number,
   ) {
     super();
+    if (semiMajorAxis <= 0 || semiMinorAxis <= 0)
+      throw new Error('Півосі мають бути додатними числами');
     this.center = center;
   }
 

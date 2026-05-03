@@ -7,10 +7,16 @@ export class TriangleBySides extends Shape {
     private c: number,
   ) {
     super();
+    if (a <= 0 || b <= 0 || c <= 0) {
+      throw new Error('Сторони мають бути додатними числами');
+    }
+    if (a + b <= c || a + c <= b || b + c <= a) {
+      throw new Error('Порушення нерівності трикутника');
+    }
   }
 
   public get name(): string {
-    return 'Треугольник (по сторонам)';
+    return 'Трикутник (по сторонам)';
   }
 
   public getArea(): number {

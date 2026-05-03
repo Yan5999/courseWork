@@ -8,6 +8,8 @@ export class TrapezoidBySides extends Shape {
     private h: number,
   ) {
     super();
+    if (a <= 0 || b <= 0 || c <= 0 || h <= 0)
+      throw new Error('Параметри мають бути додатними числами');
   }
 
   public get name(): string {

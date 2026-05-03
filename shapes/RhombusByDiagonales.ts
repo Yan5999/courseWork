@@ -6,6 +6,8 @@ export class RhombusByDiagonales extends Shape {
     private d2: number,
   ) {
     super();
+    if (d1 <= 0 || d2 <= 0)
+      throw new Error('Діагоналі мають бути додатними числами');
   }
 
   public get name(): string {

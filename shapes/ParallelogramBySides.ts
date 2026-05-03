@@ -7,6 +7,8 @@ export class ParallelogramBySides extends Shape {
     private height: number,
   ) {
     super();
+    if (base <= 0 || side <= 0 || height <= 0)
+      throw new Error('Параметри мають бути додатними числами');
     this.center = { x: 0, y: 0 };
   }
 

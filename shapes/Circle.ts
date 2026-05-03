@@ -7,6 +7,7 @@ export class Circle extends Shape {
     public radius: number,
   ) {
     super();
+    if (radius <= 0) throw new Error('Радіус має бути додатним числом');
     this.center = center;
   }
 
