@@ -12,7 +12,12 @@ export class Polygon extends Shape {
       throw new Error(
         `Потрібно було ${count} вершин, а отримано ${vertices.length}`,
       );
-    } else if (this.vertices.length < 3) {
+    }
+
+    if (this.vertices.length < 3) {
+      throw new Error('Многокутник повинен мати мінімум 3 вершини');
+    }
+    if (this.count < 3) {
       throw new Error('Многокутник повинен мати мінімум 3 вершини');
     }
 
@@ -44,7 +49,6 @@ export class Polygon extends Shape {
     return Math.abs(area) / 2;
   }
 
-  // периметр по точкам
   public getPerimeter(): number {
     let perimeter = 0;
     const n = this.vertices.length;
@@ -55,7 +59,6 @@ export class Polygon extends Shape {
     return perimeter;
   }
 
-  // среднее арифметическое координат
   protected calculateCentroid(): IPoint {
     const sum = this.vertices.reduce(
       (acc, val) => ({ x: acc.x + val.x, y: acc.y + val.y }),
